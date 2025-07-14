@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Internship Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #c3c7cb;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2rem;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #a6e3a1;
+      border-left: 4px solid #89dceb;
+      padding-left: 0.75rem;
+      margin-top: 2rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    pre, code {
+      background: #2b2b3d;
+      color: #f8f8f2;
+      padding: 0.5rem;
+      border-radius: 6px;
+      display: block;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+    strong {
+      color: #f5c2e7;
+    }
+    a {
+      color: #89dceb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cybersecurity Internship Report</h1>
+
+  <h2>1. Common Cybersecurity Threats</h2>
+  <p>I learned about several common threats that organizations face, including:</p>
+  <ul>
+    <li><strong>Brute force attacks</strong>, where hackers try to guess passwords automatically, often targeting services like SSH, WordPress sites that have vulnerabilities, or admin dashboards.</li>
+    <li><strong>Phishing</strong>, which involves emails (often impersonating a trusted person or an organization) or fake websites designed to steal login info or sneak in malware like Trojan horses or ransomware.</li>
+    <li><strong>Malware</strong>: Ransomware, Trojans, or botnets.</li>
+    <li><strong>C2 infrastructure</strong>, which hackers use to maintain remote control over compromised systems.</li>
+  </ul>
+
+  <h2>2. Red Team Mindset</h2>
+  <p>Understanding cybersecurity defense means thinking like an attacker. The red team mindset involves performing careful reconnaissance (OSINT or aggressive scanning) to learn about your targets, spotting weaknesses and potential ways to exploit the target. It also involves using what we know about attacker tactics and behaviors to predict and replicate real attacks. Tools like the MITRE ATT&CK framework help map out and connect these attacker techniques.</p>
+
+  <h2>3. MITRE ATT&CK Framework & Cyber Threat Intelligence (CTI)</h2>
+  <p>The MITRE ATT&CK framework is a widely used knowledge base that maps out how adversaries operate. It helps security teams:</p>
+  <ul>
+    <li>Understand attacker behaviors in a clear way.</li>
+    <li>Find areas where defenses may be weak.</li>
+    <li>Focus their efforts on the most important threats.</li>
+  </ul>
+  <p>By using threat intelligence, teams can connect the dots between observed clues like malicious IP addresses, domains, or files, and known threat groups or campaigns. Cyber Threat Intelligence (CTI) gives extra context to raw data, turning it into useful insights that can guide better security decisions.</p>
+
+  <h2>4. Hands-On CTI Use Case: Malicious IP Analysis</h2>
+  <p>As a hands-on experiment, I analyzed the IP address <code>185.100.87.202</code>, a known malicious Indicator of Compromise (IOC), using OSINT tools.</p>
+  <ul>
+    <li><strong>VirusTotal</strong> flagged the IP as malicious by 9+ vendors for phishing, malware, and command-and-control activity.</li>
+    <li><strong>AbuseIPDB</strong> showed over 15,800 reports by 900+ sources that indicated brute-force SSH attack, port scan, and web application hacking.</li>
+    <li><strong>Shodan</strong> revealed an open SSH port (22) with OpenSSH 9.2p1 Debian likely utilized for unauthorized remote use or C2.</li>
+  </ul>
+
+  <h3>Threat Infrastructure Context</h3>
+  <p>This IP is hosted by FlokiNET Ltd, a Romanian hosting provider well known for privacy-focused hosting but typically abused by cybercriminals. The IP was detected in most threat reports over several years and remains an active threat.</p>
+
+  <h3>MITRE ATT&CK Correlation - Mapped Tactics and Techniques:</h3>
+  <ul>
+    <li><strong>SSH brute force attacks</strong> <code>(T1110)</code></li>
+    <li><strong>RCE (Remote Code Execution) via SSH</strong> <code>(T1059)</code></li>
+    <li><strong>Persistent access maintenance via server components exposed</strong> (open ports etc.) <code>(T1505)</code></li>
+    <li><strong>Use of SSH as a covert C2 channel</strong> <code>(T1071)</code></li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>The IP is a persistent malicious IP involved in brute-force, phishing, and malware operations. Its hosting environment and behavior align with tactics used by financially motivated cybercriminal groups. This exercise showed the importance of combining multiple intelligence sources and using frameworks like MITRE ATT&CK to build actionable threat profiles.</p>
+
+</body>
+</html>
